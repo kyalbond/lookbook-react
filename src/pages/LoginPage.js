@@ -16,7 +16,11 @@ import {Button} from 'react-native-elements';
 
 import Firebase from '../services/Firebase';
 
+/**
+ * Component for loggin in
+ */
 class Login extends React.Component {
+  // Header styling
   static navigationOptions = {
     title: 'Look-Book',
     headerLeft: null,
@@ -29,6 +33,7 @@ class Login extends React.Component {
     },
   };
 
+  // Set state for user input
   constructor(props) {
     super(props);
 
@@ -38,17 +43,27 @@ class Login extends React.Component {
     };
   }
 
+  /**
+   * Attempt to log user in
+   */
   onLogin() {
     const {email, password} = this.state;
 
+    // Check email length
     if (email.length == 0) {
       ToastAndroid.show('Please enter an email!', ToastAndroid.SHORT);
+
+    // Check password length
     } else if (password.length == 0) {
       ToastAndroid.show('Please enter a password', ToastAndroid.SHORT);
     } else {
+
+      // Call firebase and attempt to sign in
       Firebase.firebase_signIn(email, password)
         .then(() => {
           ToastAndroid.show('Sucessfully signed in', ToastAndroid.SHORT);
+
+          // Navigate to the home screen
           this.props.navigation.navigate('Home');
         })
         .catch(err => {
@@ -57,6 +72,9 @@ class Login extends React.Component {
     }
   }
 
+  /**
+   * Render app logo, user input, and login/sign-up buttons
+   */
   render() {
     return (
       <View style={styles.container}>
@@ -105,6 +123,7 @@ class Login extends React.Component {
   }
 }
 
+// Styling for components
 const styles = StyleSheet.create({
   container: {
     flex: 1,

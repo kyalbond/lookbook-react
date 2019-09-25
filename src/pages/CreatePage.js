@@ -16,10 +16,13 @@ import {Button} from 'react-native-elements';
 
 import Firebase from '../services/Firebase';
 
+/**
+ * Account creation component
+ */
 class CreatePage extends React.Component {
+  // Header styling
   static navigationOptions = {
     title: 'Create Account     ',
-
     headerStyle: {
       backgroundColor: '#2B353F',
     },
@@ -27,9 +30,10 @@ class CreatePage extends React.Component {
       backgroundColor: '#2B353F',
       color: '#ffffff',
     },
-    headerTintColor: '#ffffff'
+    headerTintColor: '#ffffff',
   };
 
+  // Set state for input
   constructor(props) {
     super(props);
 
@@ -40,22 +44,31 @@ class CreatePage extends React.Component {
     };
   }
 
+
+  /**
+   * Check user input and give appropriate message back
+   */
   onCreateAccount() {
     const {email, password, username} = this.state;
 
-    if (email.length == 0) {
+    if (email.length == 0) {              // Check email
+      ToastAndroid.show('Please enter a email', ToastAndroid.SHORT);
+    } else if (password.length == 0) {    // Check password
+      ToastAndroid.show('Please enter an password!', ToastAndroid.SHORT);
+    } else if (username.length == 0) {    // Check username
       ToastAndroid.show('Please enter a username', ToastAndroid.SHORT);
-    } else if (password.length == 0) {
-      ToastAndroid.show('Please enter an email!', ToastAndroid.SHORT);
-    } else if (username.length == 0) {
-      ToastAndroid.show('Please enter a password', ToastAndroid.SHORT);
     } else {
+      // If valid input then attempt to create account
       Firebase.auth_createAccount(email, password)
         .then(() => {
           ToastAndroid.show('Sucessfully created account', ToastAndroid.SHORT);
+
+          // Sign user in after account creation and set username
           Firebase.firebase_signIn(email, password).then(() => {
             Firebase.auth_updateProfile(username);
           });
+
+          // Navigate back to login screen
           this.props.navigation.navigate('Login');
         })
         .catch(err => {
@@ -64,6 +77,9 @@ class CreatePage extends React.Component {
     }
   }
 
+  /**
+   * Render input fields and submit button
+   */
   render() {
     return (
       <View style={styles.container}>
@@ -105,6 +121,8 @@ class CreatePage extends React.Component {
   }
 }
 
+
+// Component Styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,

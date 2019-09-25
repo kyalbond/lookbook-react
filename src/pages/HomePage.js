@@ -16,7 +16,11 @@ import {collectionData} from 'rxfire/firestore';
 import {Image, Avatar} from 'react-native-elements';
 import {ListItem} from 'react-native-elements';
 
+/**
+ * Home component for rendering posts from firestore cloud
+ */
 class Home extends React.Component {
+  // Header styling and logout functionality
   static navigationOptions = ({navigation}) => {
     const {params} = navigation.state;
     return {
@@ -29,6 +33,8 @@ class Home extends React.Component {
         backgroundColor: '#2B353F',
         color: '#ffffff',
       },
+
+      // Setup logout button
       headerRight: (
         <TouchableHighlight
           onPress={() =>
@@ -56,6 +62,9 @@ class Home extends React.Component {
     };
   };
 
+  /**
+   * Setup state variables
+   */
   constructor(props) {
     super(props);
 
@@ -67,6 +76,9 @@ class Home extends React.Component {
     };
   }
 
+  /**
+   * Get data from firestore and setup logout function
+   */
   componentDidMount() {
     this.getData();
     this.props.navigation.setParams({
@@ -74,20 +86,23 @@ class Home extends React.Component {
     });
   }
 
+  /**
+   * Calls firestore and creates a subscription to the collection allowing
+   * live updates to component
+   */
   getData = () => {
     const dataRef = firebase.firestore().collection('images');
-    collectionData(
-      dataRef.orderBy('date', 'desc'),
-    ).subscribe(posts => {
+    collectionData(dataRef.orderBy('date', 'desc')).subscribe(posts => {
       this.setState({
         data: posts,
         loading: false,
       });
     });
-
-    Firebase.firebase_signIn('kyalbond@gmail.com', '1234qwer');
   };
 
+  /**
+   * Logs user out through firebase_auth and navigates back to login screen.
+   */
   logout = () => {
     Firebase.firebase_signOut()
       .then(() => {
@@ -99,6 +114,12 @@ class Home extends React.Component {
       });
   };
 
+  /**
+   * Called when user taps on photo, access post and add a like to counter
+   *
+   * @param {String} uid
+   * @param {Number} likes
+   */
   likePhoto(uid, likes) {
     Firebase.firestore_addLike(uid, likes)
       .then(() => {
@@ -109,6 +130,9 @@ class Home extends React.Component {
       });
   }
 
+  /**
+   * Render posts in an infinate flatlist
+   */
   render() {
     if (this.loading) {
       return (
@@ -120,12 +144,15 @@ class Home extends React.Component {
       return (
         <View>
           <FlatList
+            // For each post in firestore, render component
             data={this.state.data}
             renderItem={({item}) => (
               <View>
                 <TouchableHighlight
+                  // Attempts to like image when pressed
                   onPress={this.likePhoto.bind(this, item.id, item.likes)}>
                   <Image
+                  // Image for post
                     style={{
                       width: Dimensions.get('screen').width,
                       height: Dimensions.get('screen').width,
@@ -135,24 +162,27 @@ class Home extends React.Component {
                   />
                 </TouchableHighlight>
                 <ListItem
-                  title={item.name}
-                  subtitle={new Date(
+                // Info under image
+                  title={item.name}       // Username of post
+                  subtitle={new Date(     // Date of post
                     parseInt((item.date + '').split('=')[1].split(',')[0]) *
                       1000,
                   ).toDateString()}
                   leftAvatar={
-                    <Avatar
+                    <Avatar               // Initals of user
                       overlayContainerStyle={{backgroundColor: '#2B353F'}}
                       title={item.name[0]}
                       rounded
                     />
-                  }
-                  rightTitle={'Likes:  ' + item.likes}
+                  }                       // Likes of post
+                  rightTitle={'Likes:  ' + item.likes} 
                 />
               </View>
             )}
           />
+
           <FAB
+            // Floating action button for accessing camera
             style={styles.fab}
             color="#ecf0f1"
             icon={require('../assets/camera.png')}
@@ -166,6 +196,7 @@ class Home extends React.Component {
   }
 }
 
+// Styling for component
 const styles = StyleSheet.create({
   container: {
     flex: 1,

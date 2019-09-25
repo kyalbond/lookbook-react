@@ -6,7 +6,12 @@ import {FAB} from 'react-native-paper';
 
 import Firebase from '../services/Firebase';
 
+/**
+ * Camera component for streaming camera data and taking photos.
+ */
 export default class CameraPage extends React.Component {
+
+  // Header styling
   static navigationOptions = {
     title: 'Camera   ',
     headerStyle: {
@@ -15,6 +20,7 @@ export default class CameraPage extends React.Component {
     headerTintColor: '#ffffff'
   };
 
+  // Render camera stream
   render() {
     return (
       <View style={styles.container}>
@@ -24,6 +30,8 @@ export default class CameraPage extends React.Component {
           }}
           style={styles.preview}
           type={RNCamera.Constants.Type.back}
+
+          // Permissions
           androidCameraPermissionOptions={{
             title: 'Permission to use camera',
             message: 'We need your permission to use your camera',
@@ -38,7 +46,7 @@ export default class CameraPage extends React.Component {
           }}
         />
 
-        <FAB
+        <FAB                  // Fab for taking photo
           style={styles.fab}
           color="#ecf0f1"
           label="CAPTURE"
@@ -49,17 +57,26 @@ export default class CameraPage extends React.Component {
     );
   }
 
+  /**
+   * Take image as base64 then upload to firestore
+   */
   takePicture = async () => {
     if (this.camera) {
+      // Setup parameters for image
       const options = {quality: 0.3, base64: true, fixOrientation: true};
       const data = await this.camera.takePictureAsync(options);
       ToastAndroid.show('Uploading Captured Image...', ToastAndroid.LONG);
+      
+      // Attempt to upload image ti firestore
       Firebase.firestore_uploadPost('data:/image/jpeg;base64,' + data['base64']);
+      
+      // Navigate back home
       this.props.navigation.navigate('Home');
     }
   };
 }
 
+// Styling for component
 const styles = StyleSheet.create({
   container: {
     flex: 1,
