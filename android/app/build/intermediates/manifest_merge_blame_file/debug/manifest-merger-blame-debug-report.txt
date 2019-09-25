@@ -1,0 +1,97 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.lookbook"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="16"
+9        android:targetSdkVersion="28" />
+10
+11    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+11-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\debug\AndroidManifest.xml:5:5-77
+11-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\debug\AndroidManifest.xml:5:22-75
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:4:5-67
+12-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:4:22-64
+13    <uses-permission android:name="android.permission.CAMERA" />
+13-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:5:5-65
+13-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:5:22-62
+14    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+14-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:6:5-71
+14-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:6:22-68
+15
+16    <uses-feature
+16-->[:react-native-camera] C:\Users\Kyal-PC\Desktop\lookbook\node_modules\react-native-camera\android\build\intermediates\library_manifest\generalDebug\AndroidManifest.xml:11:5-13:36
+17        android:name="android.hardware.camera"
+17-->[:react-native-camera] C:\Users\Kyal-PC\Desktop\lookbook\node_modules\react-native-camera\android\build\intermediates\library_manifest\generalDebug\AndroidManifest.xml:12:9-47
+18        android:required="false" />
+18-->[:react-native-camera] C:\Users\Kyal-PC\Desktop\lookbook\node_modules\react-native-camera\android\build\intermediates\library_manifest\generalDebug\AndroidManifest.xml:13:9-33
+19    <uses-feature
+19-->[:react-native-camera] C:\Users\Kyal-PC\Desktop\lookbook\node_modules\react-native-camera\android\build\intermediates\library_manifest\generalDebug\AndroidManifest.xml:14:5-16:36
+20        android:name="android.hardware.camera.autofocus"
+20-->[:react-native-camera] C:\Users\Kyal-PC\Desktop\lookbook\node_modules\react-native-camera\android\build\intermediates\library_manifest\generalDebug\AndroidManifest.xml:15:9-57
+21        android:required="false" />
+21-->[:react-native-camera] C:\Users\Kyal-PC\Desktop\lookbook\node_modules\react-native-camera\android\build\intermediates\library_manifest\generalDebug\AndroidManifest.xml:16:9-33
+22
+23    <application
+23-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:8:5-26:19
+24        android:name="com.lookbook.MainApplication"
+24-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:9:7-38
+25        android:allowBackup="false"
+25-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:13:7-34
+26        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+26-->[androidx.core:core:1.0.1] C:\Users\Kyal-PC\.gradle\caches\transforms-2\files-2.1\72b2b92ec4ab73ff21fb9bc348de3b22\core-1.0.1\AndroidManifest.xml:22:18-86
+27        android:debuggable="true"
+28        android:icon="@mipmap/ic_launcher"
+28-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:11:7-41
+29        android:label="@string/app_name"
+29-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:10:7-39
+30        android:roundIcon="@mipmap/ic_launcher_round"
+30-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:12:7-52
+31        android:theme="@style/AppTheme"
+31-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:14:7-38
+32        android:usesCleartextTraffic="true" >
+32-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\debug\AndroidManifest.xml:7:18-53
+33        <activity
+33-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:15:7-24:18
+34            android:name="com.lookbook.MainActivity"
+34-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:16:9-37
+35            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+35-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:18:9-79
+36            android:label="@string/app_name"
+36-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:17:9-41
+37            android:windowSoftInputMode="adjustResize" >
+37-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:19:9-51
+38            <intent-filter>
+38-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:20:9-23:25
+39                <action android:name="android.intent.action.MAIN" />
+39-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:21:13-65
+39-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:21:21-62
+40
+41                <category android:name="android.intent.category.LAUNCHER" />
+41-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:22:13-73
+41-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:22:23-70
+42            </intent-filter>
+43        </activity>
+44        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+44-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:25:7-84
+44-->C:\Users\Kyal-PC\Desktop\lookbook\android\app\src\main\AndroidManifest.xml:25:17-81
+45        <activity
+45-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\Kyal-PC\.gradle\caches\transforms-2\files-2.1\dfcc725cef9b732294e499cd7aa4eb53\jetified-play-services-base-16.0.1\AndroidManifest.xml:23:9-26:75
+46            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+46-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\Kyal-PC\.gradle\caches\transforms-2\files-2.1\dfcc725cef9b732294e499cd7aa4eb53\jetified-play-services-base-16.0.1\AndroidManifest.xml:24:13-79
+47            android:exported="false"
+47-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\Kyal-PC\.gradle\caches\transforms-2\files-2.1\dfcc725cef9b732294e499cd7aa4eb53\jetified-play-services-base-16.0.1\AndroidManifest.xml:25:13-37
+48            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+48-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\Kyal-PC\.gradle\caches\transforms-2\files-2.1\dfcc725cef9b732294e499cd7aa4eb53\jetified-play-services-base-16.0.1\AndroidManifest.xml:26:13-72
+49
+50        <meta-data
+50-->[com.google.android.gms:play-services-basement:16.1.0] C:\Users\Kyal-PC\.gradle\caches\transforms-2\files-2.1\25619091422e8fd49e14a628794600f7\jetified-play-services-basement-16.1.0\AndroidManifest.xml:23:9-25:69
+51            android:name="com.google.android.gms.version"
+51-->[com.google.android.gms:play-services-basement:16.1.0] C:\Users\Kyal-PC\.gradle\caches\transforms-2\files-2.1\25619091422e8fd49e14a628794600f7\jetified-play-services-basement-16.1.0\AndroidManifest.xml:24:13-58
+52            android:value="@integer/google_play_services_version" />
+52-->[com.google.android.gms:play-services-basement:16.1.0] C:\Users\Kyal-PC\.gradle\caches\transforms-2\files-2.1\25619091422e8fd49e14a628794600f7\jetified-play-services-basement-16.1.0\AndroidManifest.xml:25:13-66
+53    </application>
+54
+55</manifest>
